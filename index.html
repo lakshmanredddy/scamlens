@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ScamLens — explainable digital fraud intelligence for suspicious messages, URLs and screenshots.">
+  <title>ScamLens — Digital Fraud Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="ScamLens home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Scam<span>Lens</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#product">Product</a><a href="#how-it-works">How it works</a><a href="#security">Security</a><a href="#dashboard">Dashboard</a><a href="#resources">Resources</a>
+      </nav>
+      <button class="btn btn-small btn-outline" data-scroll="#scanner">Analyze something</button>
+    </header>
+
+    <main id="top">
+      <section class="hero section" id="product">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> DIGITAL FRAUD INTELLIGENCE</div>
+          <h1>See the threat<br><em>before you click.</em></h1>
+          <p class="hero-text">ScamLens analyzes suspicious messages, links and screenshots, explains the warning signs, and turns them into clear safety actions.</p>
+          <div class="hero-actions"><button class="btn btn-primary" data-scroll="#scanner">Analyze something <span>→</span></button><button class="text-btn" data-scroll="#how-it-works">Explore platform <span>↓</span></button></div>
+          <div class="trust-row"><span>Explainable analysis</span><i></i><span>Privacy-conscious</span><i></i><span>Multi-signal detection</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="scan-card glass">
+            <div class="scan-top"><span>SCAMLENS ENGINE</span><span class="live-dot">● LIVE</span></div>
+            <div class="fake-message">
+              <div class="message-meta"><span class="avatar">B</span><div><strong>Bank Support</strong><small>SMS · 2 min ago</small></div></div>
+              <p>Your account will be suspended today. Verify your KYC immediately to avoid interruption.</p>
+              <div class="fake-link">bank-verification-example.com/kyc</div>
+            </div>
+            <div class="analysis-line"><span class="line-label">ANALYSIS</span><span class="line-value">7 indicators detected</span></div>
+            <div class="signal-grid"><span>Urgency</span><span>Impersonation</span><span>Domain mismatch</span><span>Credential request</span></div>
+            <div class="mini-risk"><div><small>RISK INDICATOR</small><strong>86</strong><span>/100</span></div><div class="mini-meter"><span></span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics section-tight">
+        <div><strong>01</strong><span>Submit suspicious content</span></div><div><strong>02</strong><span>Analyze multiple signals</span></div><div><strong>03</strong><span>Understand & act safely</span></div>
+      </section>
+
+      <section class="section scanner-section" id="scanner">
+        <div class="section-heading"><div><div class="eyebrow">UNIVERSAL SCANNER</div><h2>Investigate in seconds.</h2></div><p>Choose a source, add the suspicious content, and let ScamLens build an explainable assessment.</p></div>
+        <div class="scanner-layout">
+          <div class="scanner-panel glass">
+            <div class="tabs" role="tablist"><button class="tab active" data-type="message">Message</button><button class="tab" data-type="url">URL</button><button class="tab" data-type="screenshot">Screenshot</button><button class="tab" data-type="qr">QR</button></div>
+            <div id="message-input" class="input-view">
+              <label for="messageText">Paste suspicious text</label>
+              <textarea id="messageText" placeholder="Example: Your bank account will be blocked today. Verify your KYC now at https://example.com/verify and share the OTP..."></textarea>
+              <div class="sample-row"><button class="chip" data-sample="bank">Load bank example</button><button class="chip" data-sample="job">Load job example</button><button class="chip" data-sample="delivery">Load delivery example</button></div>
+            </div>
+            <div id="url-input" class="input-view hidden"><label for="urlText">Suspicious URL</label><input id="urlText" type="text" placeholder="https://example-login.xyz/verify"><p class="hint">ScamLens performs safe, non-browsing URL heuristics. It does not open submitted links.</p></div>
+            <div id="screenshot-input" class="input-view hidden"><label for="imageFile">Upload a screenshot</label><div class="dropzone" id="dropzone"><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp"><div class="upload-icon">↑</div><strong>Drop screenshot here</strong><span>PNG, JPG or WEBP · up to 8 MB</span><button type="button" class="btn btn-outline btn-small" id="chooseFile">Choose file</button><div id="fileName" class="file-name"></div></div><p class="hint">Demo mode uses the filename and image metadata. Connect an OCR/vision provider for production extraction.</p></div>
+            <div id="qr-input" class="input-view hidden"><label for="qrText">Paste the QR destination</label><input id="qrText" type="text" placeholder="https://example-payment.xyz/claim"><p class="hint">For safety, ScamLens analyzes the destination without opening it.</p></div>
+            <button class="btn btn-primary analyze-btn" id="analyzeBtn">Analyze content <span>→</span></button>
+          </div>
+          <div class="scanner-side">
+            <div class="side-card"><span class="side-icon">✦</span><h3>Explainable by design</h3><p>Every warning is paired with evidence and a plain-language explanation instead of an unexplained score.</p></div>
+            <div class="side-card"><span class="side-icon">⌁</span><h3>Safety-first processing</h3><p>Submitted URLs are analyzed as text. ScamLens never automatically visits suspicious destinations.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section result-section hidden" id="results">
+        <div class="result-header"><div><div class="eyebrow">ANALYSIS REPORT <span id="scanId">#SL-000000</span></div><h2 id="resultTitle">Potential scam indicators detected.</h2></div><button class="btn btn-outline btn-small" id="newScan">← New scan</button></div>
+        <div class="risk-hero glass"><div><span class="risk-label" id="riskLabel">HIGH RISK</span><p id="riskSummary">Multiple signals associated with phishing or social engineering were detected.</p></div><div class="score"><strong id="riskScore">86</strong><span>/100</span><small>RISK INDICATOR</small></div></div>
+        <div class="result-grid">
+          <div class="result-main">
+            <div class="result-block"><div class="block-heading"><h3>Detected indicators</h3><span id="indicatorCount">0 signals</span></div><div id="indicators" class="indicator-list"></div></div>
+            <div class="result-block"><div class="block-heading"><h3>How this attempt works</h3></div><div id="timeline" class="timeline"></div></div>
+            <div class="result-block"><div class="block-heading"><h3>Evidence</h3></div><div id="evidence" class="evidence-list"></div></div>
+          </div>
+          <aside class="action-card glass"><div class="eyebrow">SAFETY ACTIONS</div><h3>What to do next</h3><ul id="actions"></ul><button class="btn btn-primary full" id="saveReport">Save report</button><button class="btn btn-outline full" id="downloadReport">Download report</button></aside>
+        </div>
+      </section>
+
+      <section class="section dashboard-section" id="dashboard">
+        <div class="section-heading"><div><div class="eyebrow">LOCAL SECURITY DASHBOARD</div><h2>Your scan history.</h2></div><button class="btn btn-outline btn-small" id="clearHistory">Clear history</button></div>
+        <div class="dash-stats"><div class="dash-stat"><small>TOTAL SCANS</small><strong id="totalScans">0</strong></div><div class="dash-stat"><small>HIGH RISK</small><strong id="highScans">0</strong></div><div class="dash-stat"><small>REVIEW</small><strong id="reviewScans">0</strong></div><div class="dash-stat"><small>LOW INDICATORS</small><strong id="lowScans">0</strong></div></div>
+        <div class="history-panel"><div class="history-head"><strong>Recent analyses</strong><span>Stored locally in this browser</span></div><div id="historyList" class="history-list"><div class="empty-history">No saved scans yet. Run an analysis and choose “Save report”.</div></div></div>
+      </section>
+
+      <section class="section" id="how-it-works"><div class="section-heading"><div><div class="eyebrow">HOW IT WORKS</div><h2>From suspicious signal<br>to useful context.</h2></div><p>ScamLens combines deterministic checks with contextual AI analysis so users can understand the reasoning behind an assessment.</p></div><div class="steps"><article><span>01</span><h3>Submit</h3><p>Paste a message, enter a URL, or upload suspicious visual content.</p></article><article><span>02</span><h3>Analyze</h3><p>Extract relevant signals such as urgency, impersonation, domain patterns and requests for sensitive data.</p></article><article><span>03</span><h3>Understand</h3><p>Review evidence, an attack timeline and practical safety actions before taking the next step.</p></article></div></section>
+
+      <section class="section security-section" id="security"><div class="security-box"><div><div class="eyebrow">SECURITY BY DEFAULT</div><h2>Built to inspect threats<br>without opening them.</h2><p>ScamLens treats user-submitted URLs as untrusted data. The demo analyzer uses local heuristics and never navigates to submitted destinations.</p></div><div class="security-list"><span>✓ Input validation</span><span>✓ URL normalization</span><span>✓ No automatic navigation</span><span>✓ Sensitive-data minimization</span><span>✓ Structured analysis</span><span>✓ Clear uncertainty</span></div></div></section>
+
+      <section class="section resources" id="resources"><div class="section-heading"><div><div class="eyebrow">SCAM LIBRARY</div><h2>Know the patterns.</h2></div><p>Common digital-fraud patterns explained in a format designed for everyday users.</p></div><div class="resource-grid"><article><span>01</span><h3>Fake KYC</h3><p>Messages that create urgency around account verification and request links or sensitive information.</p></article><article><span>02</span><h3>Job scams</h3><p>Fake recruitment offers that ask for registration fees, deposits or personal documents too early.</p></article><article><span>03</span><h3>Payment scams</h3><p>Messages designed to trick users into authorizing payments or revealing authentication details.</p></article><article><span>04</span><h3>Prize scams</h3><p>Unexpected rewards followed by requests for fees, account details or identity information.</p></article></div></section>
+    </main>
+
+    <footer><div class="brand"><span class="brand-mark"><span></span></span><span>Scam<span>Lens</span></span></div><p>Digital fraud intelligence for safer decisions.</p><span>© 2026 ScamLens</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
